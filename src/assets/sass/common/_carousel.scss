@@ -1,0 +1,16 @@
+.header-carousel-item {
+    height: 550px;
+}
+
+.carousel-caption {
+    background-color: rgba(0,0,0,0.6);
+}
+
+@media (max-width: 768px) {
+    .img-md-dark {
+        opacity:0.4;
+    }
+    .text-white {
+        color: white;
+    }
+}

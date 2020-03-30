@@ -1,0 +1,23 @@
+@import "~bootstrap/scss/functions";  // 載入bootstrap套用變數的方法
+@import "~../sass/helpers/_variables"; // 載入要自定義變數的檔案
+@import "~bootstrap/scss/bootstrap";
+
+@import "../sass/common/_dashboard";  // 載入_dashboard的scss檔
+@import "../sass/common/_mainpage";  // 載入_mainpage的scss檔
+@import "../sass/common/_pagination";
+
+
+@import "../sass/common/_navbar";
+@import "../sass/common/_carousel";
+@import "../sass/common/_footer"; 
+
+
+
+@import "../sass/components/_carlist"; 
+@import "../sass/components/_category"; 
+@import "../sass/components/_contentpage"; 
+@import "../sass/components/_orderinfo"; 
+@import "../sass/components/_orderpayment"; 
+@import "../sass/components/_productdetail";
+@import "../sass/components/_productlist"; 
+@import "../sass/components/_subscription"; 
