@@ -1,3 +1,9 @@
     .footer {
         background-color: #5A3F11;
     }
+
+    @media (max-width: 540px) {
+        .gplogo {
+            width: 200px;
+        }
+    }

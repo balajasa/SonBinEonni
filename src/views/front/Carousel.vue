@@ -1,12 +1,12 @@
 <template>
     <div>
-            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+            <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselCaptions" data-slide-to="2"></li>
+            <li data-target="#carouselCaptions" data-slide-to="3"></li>
+            <li data-target="#carouselCaptions" data-slide-to="4"></li>
             </ol>
             <!-- <h1 class="text-hide" >손빈 鬆餅歐尼</h1> -->
             <div class="carousel-inner">

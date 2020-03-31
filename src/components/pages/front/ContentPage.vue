@@ -4,11 +4,8 @@
         <section class="py-4 news">
             <div class="container">
                 <div class="col-md-6 my-4">
-                    <p class="h3 text-sbbrown font-weight-bold pt-4">來自大邱的歐尼— —</p>
-                    <p class="h3 text-sbbrown font-weight-bold pt-4">秉持藝術家的精神</p>
-                    <p class="h3 text-sbbrown font-weight-bold pt-4">　嚴選各類精緻食材</p>
-                    <p class="h3 text-sbbrown font-weight-bold pt-4">　　耗時專研美味之秘方—</p>
-                    <p class="h3 text-sborange text-center font-weight-bold pt-4">一道道美味的料理因此而生。</p>
+                    <img class="maintext" src="@/assets/img/maintext.png" alt="">
+                    <img class="maintextMobile" src="@/assets/img/maintext_line.png" alt="">
                 </div>
             </div>
         </section>
@@ -19,8 +16,8 @@
         <div class="col-md-12 text-center mt-3">
             <img class="img-fluid" src="@/assets/img/oni_logo.png" alt="">
         </div>
-        <h2 class="text-sbbrown font-weight-bold text-center py-3 mb-0">只提供美味的食物</h2>
-        <div class="row no-gutters justify-content-center my-4">
+        <h2 class="text-sbbrown font-weight-bold text-center py-2 mb-0">只提供美味的食物</h2>
+        <div class="row no-gutters justify-content-center my-3">
             <div class="col-md-10">
                 <div class="row no-gutters">
                     <div class="col-lg-4 hovereffect">
@@ -44,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="row no-gutters justify-content-center my-4">
+        <div class="row no-gutters justify-content-center my-3">
             <div class="col-md-10 mb-0">
                 <div class="row no-gutters">
                     <div class="col-lg-4 hovereffect">

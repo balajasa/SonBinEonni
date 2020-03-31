@@ -11,6 +11,22 @@
     font-size: 22px;
 }
 
+@media (max-width: 575.98px) {
+    .logo {
+        display: none;
+    }
+    .logoMobile {
+        display: block;
+    }
+}
+
+@media (min-width: 576px) {
+    .logoMobile {
+        display: none;
+    }
+}
+
+
 .favoritemodal {
     font-size: 18px;
 }

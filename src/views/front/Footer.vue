@@ -4,14 +4,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4 col-md-3">
-                <img class="img-fluid" src="@/assets/img/gplogo.png">
+                <img class="img-fluid gplogo" src="@/assets/img/gplogo.png">
             </div>
-            <div class="col-sm-4 col-md-4 col-md pl-5">
+            <div class="col-sm-4 pl-sm-0 col-md-4 pl-md-5">
                 <ul class="list-unstyled text-white">
                     <li class="font-weight-bold pb-2">關於我們</li>
-                    <li class="pb-1"><a href="#newmessage" class="text-white">美味食譜</a></li>
-                    <li class="pb-1"><a href="booking.html" class="text-white">線上訂位</a></li>
-                    <li class="pb-1"><router-link class="text-white" to="/shopping/shopping_prod">歐尼小舖</router-link></li>
+                    <li class="pb-1"><a href="#" class="text-white">美味食譜</a></li>
+                    <li class="pb-1"><a href="#" class="text-white">線上訂位</a></li>
+                    <li class="pb-1"><router-link class="text-white" to="/shopping/productlist">歐尼小舖</router-link></li>
                 </ul>
             </div>
             <div class="col-sm-4 col-md-4">

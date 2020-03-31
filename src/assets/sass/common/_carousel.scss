@@ -1,3 +1,19 @@
+
+@media (max-width: 768px) {
+    #carouselCaptions .header-carousel-item{
+        height: 500px;
+    }
+}
+
+@media (max-width: 576px) {
+    #carouselCaptions .header-carousel-item{
+        height: 350px;
+    }
+}
+
+
+
+
 .header-carousel-item {
     height: 550px;
 }

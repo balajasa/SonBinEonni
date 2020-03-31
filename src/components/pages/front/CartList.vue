@@ -18,7 +18,7 @@
                         <thead>
                             <tr class="text-sbbrown font-weight-bold">
                                 <th width="8%"></th>
-                                <th width="18%"></th>
+                                <th class="productTh" width="18%"></th>
                                 <th>商品名稱</th>
                                 <th width="15%" class="text-center">數量</th>
                                 <th width="15%" class="text-center">金額</th>
@@ -31,7 +31,7 @@
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
-                                <td class="align-middle">
+                                <td class="productImg align-middle">
                                     <img :src="item.product.imageUrl" class="img-thumbnail">
                                 </td>
                                 <td class="align-middle" @click="$router.push(`/shopping/productdetail/${item.id}`)">{{ item.product.title }}</td>
@@ -51,7 +51,7 @@
                             </tr>
                         </tbody>
                         <tfoot>
-                            <tr>
+                            <tr class="tableTotal">
                                 <td colspan="4" class="font-weight-bold text-right">小計</td>
                                 <td class="h5 font-weight-bold text-right text-danger">{{ cartData.total | currency }}</td>
                             </tr>

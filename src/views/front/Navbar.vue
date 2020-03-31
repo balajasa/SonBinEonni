@@ -3,7 +3,8 @@
     <nav class="navbar navbar-expand-lg navbar-light font-weight-bold" style="background-color: #efe7de;">
         <div class="container">
             <router-link to="/">
-                <img src="@/assets/img/logo_wn.svg" width="250" height="100" alt="">
+                <img class="logo" src="@/assets/img/logo_wn.svg" width="250" height="100" alt="">
+                <img class="logoMobile" src="@/assets/img/mobile_logo.png" width="" height="" alt="">
             </router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +21,7 @@
                 </ul>
                 <!-- 願望清單 -->
                 <div class="dropdown h4 ml-3" @click.prevent="getFavorites">
-                    <button class="btn dropdownIcon" id="favorDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn dropdownIcon ml-0 pl-0" id="favorDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-heart">
                             <span v-if="favorLength > 0">{{ favorLength  }}</span>
                         </i>
@@ -51,7 +52,7 @@
                 </div>
                 <!-- 購物車 -->
                 <div class="dropdown h4 ml-3" @click.prevent="getCart">
-                    <button class="btn dropdownIcon" id="cartDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn dropdownIcon ml-0 pl-0" id="cartDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-shopping-cart" :class="{'empty': cartLength === 0}">
                             <span v-if="cartLength > 0">{{ cartLength }}</span>
                         </i>
