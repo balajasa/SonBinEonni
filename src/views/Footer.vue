@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4 col-md-3">
-                <img class="img-fluid gplogo" src="@/assets/img/gplogo.png">
+                <img class="img-fluid gplogo" src="../assets/img/gplogo.png">
             </div>
             <div class="col-sm-4 pl-sm-0 col-md-4 pl-md-5">
                 <ul class="list-unstyled text-white">

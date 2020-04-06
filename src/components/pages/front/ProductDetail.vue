@@ -85,19 +85,19 @@
                             <div class="row text-center mb-5">
                                 <div class="col-sm-6 col-md-3">
                                     <p class="foodText align-items-start">有機新鮮米</p>
-                                    <img class="align-items-center" src="@/assets/img/rice.png" alt="">
+                                    <img class="align-items-center" src="../../../assets/img/rice.png" alt="">
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <p class="foodText align-items-start">100%芝麻原油</p>
-                                    <img class="align-items-center" src="@/assets/img/oil.png" alt="">
+                                    <img class="align-items-center" src="../../../assets/img/oil.png" alt="">
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <p class="foodText align-items-start">優質魚肉魚板</p>
-                                    <img class="align-items-center mt-4" src="@/assets/img/fishcake.png" alt="">
+                                    <img class="align-items-center mt-4" src="../../../assets/img/fishcake.png" alt="">
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <p class="foodText align-items-start">有雞洗選蛋</p>
-                                    <img class="align-items-center mt-4" src="@/assets/img/egg.png" alt="">
+                                    <img class="align-items-center mt-4" src="../../../assets/img/egg.png" alt="">
                                 </div>
                             </div>
                             <div class="row mt-4 p-3">
@@ -112,7 +112,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-md-9">
-                                    <img class="img-fluid" src="@/assets/img/comp_img.jpg" alt="">
+                                    <img class="img-fluid" src="../../../assets/img/comp_img.jpg" alt="">
                                 </div>
                             </div>
                         </div>

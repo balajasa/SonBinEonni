@@ -3,8 +3,8 @@
     <nav class="navbar navbar-expand-lg navbar-light font-weight-bold" style="background-color: #efe7de;">
         <div class="container">
             <router-link to="/">
-                <img class="logo" src="@/assets/img/logo_wn.svg" width="250" height="100" alt="">
-                <img class="logoMobile" src="@/assets/img/mobile_logo.png" width="" height="" alt="">
+                <img class="logo" src="../assets/img/logo_wn.svg" width="250" height="100" alt="">
+                <img class="logoMobile" src="../assets/img/mobile_logo.png">
             </router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

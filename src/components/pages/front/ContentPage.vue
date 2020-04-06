@@ -4,8 +4,8 @@
         <section class="py-4 news">
             <div class="container">
                 <div class="col-md-6 my-4">
-                    <img class="maintext" src="@/assets/img/maintext.png" alt="">
-                    <img class="maintextMobile" src="@/assets/img/maintext_line.png" alt="">
+                    <img class="maintext" src="../../../assets/img/maintext.png" alt="">
+                    <img class="maintextMobile" src="../../../assets/img/maintext_line.png" alt="">
                 </div>
             </div>
         </section>
@@ -14,7 +14,7 @@
     <!-- 圖片介紹區 -->
     <section class="menu" >
         <div class="col-md-12 text-center mt-3">
-            <img class="img-fluid" src="@/assets/img/oni_logo.png" alt="">
+            <img class="img-fluid" src="../../../assets/img/oni_logo.png" alt="">
         </div>
         <h2 class="text-sbbrown font-weight-bold text-center py-2 mb-0">只提供美味的食物</h2>
         <div class="row no-gutters justify-content-center my-3">
