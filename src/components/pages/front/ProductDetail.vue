@@ -33,7 +33,6 @@
                             <div class="onlinePrice ml-auto mb-0">
                                 <small>網路價</small>
                                 <strong class="text-danger font-weight-bold">{{product.price | currency}}</strong>
-                                <!-- <strong class="text-danger"> $299</strong> -->
                             </div>
                         </div>
                     </div>
@@ -83,20 +82,6 @@
                     <div class="productItd">
                         <h5 class="font-weight-bold text-sbbrown"><i class="fas fa-leaf"></i> 商品特色</h5>
                         <div class="productContent p-3 my-4">
-                            <!-- <div class="row text-center">
-                                <div class="col-md-3">
-                                    <p class="foodText">有機新鮮米</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p class="foodText">100%芝麻原油</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p class="foodText">優質魚肉製成魚糕</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p class="foodText">有雞洗選蛋</p>
-                                </div>
-                            </div> -->
                             <div class="row text-center mb-5">
                                 <div class="col-sm-6 col-md-3">
                                     <p class="foodText align-items-start">有機新鮮米</p>
@@ -196,7 +181,7 @@ export default {
     methods: {
         getProduct() {  // 取得單一商品列表
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${vm.productId}`;  // 此處使用戶端取得資料的API
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${vm.productId}`;  // 此處使用戶端取得資料的API
             vm.isLoading = true;
             vm.$http.get(api).then((response) => {
                 vm.isLoading = false;
@@ -211,7 +196,7 @@ export default {
         // 取得所有商品資料
         getProducts() {
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
             
             vm.isLoading = true;
             vm.$http.get(api).then((response) => {
@@ -226,7 +211,7 @@ export default {
         },
         addtoCart(id , productNum ,qty = 1) {  // ES6預設值qty=1
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
                 const cart = {
                     product_id: id,
                     qty,

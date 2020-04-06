@@ -156,7 +156,7 @@ export default {
         creatrOrder() {
             // 送出訂單
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`;
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order`;
             const order = vm.form;
             vm.isLoading = true;
             vm.isNext = true;
@@ -189,7 +189,7 @@ export default {
         // 刪除確認購買商品
         cancelCart() {
             const vm = this;
-            const getUrl = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+            const getUrl = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
             vm.$http.get(getUrl).then((response) => {
                 if (!response.data.success) {
                     vm.$bus.$emit('message:push', response.data.message, 'danger');
@@ -202,7 +202,7 @@ export default {
                     }
                 if (vm.isConfirm) {
                     vm.cartData.carts.forEach((item) => {
-                        const delUurl = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${item.id}`;
+                        const delUurl = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${item.id}`;
                         vm.$http.delete(delUurl).then((res) => {
                             if (!res.data.success) {
                                 vm.$bus.$emit('message:push', res.data.message, 'danger');

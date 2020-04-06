@@ -35,17 +35,7 @@
                                     <img :src="item.product.imageUrl" class="img-thumbnail">
                                 </td>
                                 <td class="align-middle" @click="$router.push(`/shopping/productdetail/${item.id}`)">{{ item.product.title }}</td>
-                                <!-- <td class="align-middle text-right orderColumn" v-if="isConfirm">{{ item.qty }}</td> -->
                                 <td class="align-middle text-right editColumn">{{ item.qty }}
-                                    <!-- <div class="btn-group border countNumber">
-                                        <button type="button" class="btn btn-light btn-sm rounded-0" @click="changeQty(item, -1)">
-                                            <i class="fas fa-minus"></i>
-                                        </button> 
-                                        <input class="productNumber text-center" type="text" max='10' min='1' v-model="item.qty" @change="changeNumber(item, item.qty)">{{ item.qty }}
-                                        <button type="button" class="btn btn-light btn-sm rounded-0" @click="changeQty(item, -1)">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div> -->
                                 </td>
                                 <td class="align-middle text-right">{{ item.total | currency }}</td>
                             </tr>
@@ -132,7 +122,7 @@ export default {
         getCart() {  // 從localStorage取資料
             const vm = this;
             vm.isLoading = true;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
             vm.$http.get(url).then(response => {
                 vm.isLoading = false;
                 vm.myCarts = response.data.data;
@@ -141,7 +131,7 @@ export default {
         },
         removeCartItem(id) {
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`;
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
             vm.$http.delete(url).then(() => {
                 // console.log('removeCartItem',response.data);
                 vm.getCart();
@@ -185,23 +175,11 @@ export default {
         // 取得確認購物資料(從API取資料)
         getCartData() {
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
             vm.$http.get(url).then((response) => {
                 // console.log('getCartData' , response.data);
                 vm.isLoading = false;
                 vm.cartData = response.data.data;
-
-                // if (!response.data.success) {
-                // vm.$bus.$emit('message:push', response.data.message, 'danger');
-                // } 
-                // else {
-                //     vm.cartData = response.data.data;
-                //     if (vm.cartData.carts.length > 0) {
-                //         vm.isConfirm = true;
-                //     } else {
-                //         vm.isConfirm = false;
-                //     }
-                // }
             });
         },
         // 套用優惠券

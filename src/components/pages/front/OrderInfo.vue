@@ -133,7 +133,7 @@ export default {
         // 取得訂單資料
         getOrder() {
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order/${vm.orderId}`;
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${vm.orderId}`;
             vm.$http.get(url).then((response) => {
                 if (!response.data.success) {
                     vm.$bus.$emit('message:push', response.data.message, 'danger');
@@ -146,7 +146,7 @@ export default {
         // 確認付款
         payOrder() {
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/pay/${vm.orderId}`;
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/pay/${vm.orderId}`;
             vm.isLoading = true;
             vm.$http.post(url).then((response) => {
                 vm.isLoading = false;

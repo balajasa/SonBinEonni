@@ -19,7 +19,7 @@ export default {
   methods: {
     signout() {
       const vm = this;
-      const url = `${process.env.APIPATH}/logout`;
+      const url = `${process.env.VUE_APP_APIPATH}/logout`;
       this.$http.post(url).then((response) => {
         console.log(response.data);
         if (response.data.success) {  // 確定登出後，會將頁面跳轉回signin

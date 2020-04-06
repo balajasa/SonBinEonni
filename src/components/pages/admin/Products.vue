@@ -165,7 +165,7 @@ export default {
     },
     methods: {
         getProducts(page = 1) {  // 將products的資料取出並存放到宣告的products裡面  // 使用ES6參數預設值，假設沒有帶數值就會使用預設第一頁；若有帶數值的話就使用傳進來的數值
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
             const vm = this;  // 確保從http取回資料後能存放到vm中
             vm.isLoading = true;  // 當啟用getProducts時會執行
             this.$http.get(api).then((response) => {
@@ -186,12 +186,12 @@ export default {
             $('#productModal').modal('show');
         },
         updateProduct() {
-            let api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product`;
+            let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product`;
             let httpMethod = 'post';
             console.log(api);
             const vm = this;  // vm = data
             if (!vm.isNew) {  // 假設vm傳過來的不是新的，會修改API路徑
-                api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;  // 修改為抓取商品id路徑
+                api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;  // 修改為抓取商品id路徑
                 httpMethod = 'put'  // 將原本設定的httpMethod=post修改為put
             }
             this.$http[httpMethod](api , { data:vm.tempProduct }).then((response) => {  // 此處vm.tempProduct會報錯，故需使用{}將它包起來，前方並加上data:
@@ -212,7 +212,7 @@ export default {
         },
         delProduct() {
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
             this.$http.delete(api).then((response) => {  
                 console.log(response.data);
                 if (response.data.success) {  // 這段與updateProduct相似，若回傳成功執行getProducts
@@ -231,7 +231,7 @@ export default {
             const vm = this;
             const formData = new FormData();   // 模擬傳統表單送出的行為
             formData.append('file-to-upload' , uploadedFile);
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/upload`;
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/upload`;
             vm.status.fileUploading = true;  // 上傳符號，點下去時為true
             this.$http.post(url , formData , {  // 此處加入一個物件是因為要將格式轉換成formData的格式
                 headers: {

@@ -32,30 +32,17 @@
                             </a>
                             <!-- 商品卡 -->
                             <div class="card-body">
-                                <!-- <span class="badge badge-secondary float-right ml-2">{{ item.category }}</span> -->
                                 <h5 class="card-title text-center">
                                     <a href="#" class="text-sbbrown font-weight-bold">{{ item.title }}</a>
                                 </h5>
-                                <!-- <p class="card-text">{{ item.description }}</p> -->
                             <div class="d-flex justify-content-end align-items-baseline">
-                                <!-- <div class="h5" v-if="!item.price">{{ item.origin_price }} 元</div> -->
-                                <!-- <del class="pd_oprice h6 mb-0" v-if="item.price">原價 {{ item.origin_price }} 元</del> -->
                                 <div class="pd_price font-weight-bold mr-2 mb-0" v-if="item.price">
                                     <small class="h6 text-sbbrown">網路價</small> ${{ item.price }}
                                 </div>
                             </div>
                             </div>
-                            <div class="card-footer text-center cart-text" type="button" @click.prevent="addtoCart(item.id, item.num)">
+                            <div class="card-footer text-center cart-text" type="button" @click.prevent="addtoCart(item.id)">
                                     <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>加到購物車
-                                    
-                                <!-- <a type="button" class="btn btn-outline-secondary btn-sm" @click="$router.push(`productdetail/${item.id}`)">
-                                    <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
-                                    查看更多
-                                </a> -->
-                                <!-- <a type="button" class="btn btn-outline-danger btn-sm ml-auto" @click.prevent="addtoCart(item.id, item.num)">
-                                    <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
-                                    加到購物車
-                                </a> -->
                             </div>
                         </div>
                     </div>
@@ -75,14 +62,14 @@
 import $ from 'jquery';  // 此處要用jquery，所以必須載入
 import Pagination from '@/views/admin/Pagination';
 import Category from '@/components/pages/front/Category';
-import SideList from '@/views/front/SideList';
+import SideList from '@/views/SideList';
 
 export default {
     name: 'ProductList',
     data() {
         return {
             products: [],  // 定義products
-            // product: {},  // 存放modal資料用的物件
+            product: [],  // 存放modal資料用的物件
             category: [],  // 儲存類別
             isCurrent: '全部商品',  // 目前選擇類別
             status: {
@@ -97,7 +84,7 @@ export default {
                 has_pre: false,
                 has_next: true,
             },  
-            cart: {},  // 存放localstorage購物車資料
+            cart: {},
             favorites: [],  // 存放localstorage喜歡商品資料
         };
     },
@@ -109,11 +96,10 @@ export default {
     methods: {
         getProducts() {  // 取得所有商品列表
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;  // 此處使用戶端取得資料的API
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;  // 此處使用戶端取得資料的API
             vm.isLoading = true;  // 加入讀取效果
             this.$http.get(api).then((response) => {
                 vm.isLoading = false;
-                // vm.pagination = response.data.pagination;
             if (!response.data.success) {
                 vm.$bus.$emit('message:push', response.data.message, 'danger');
                 vm.$router.push('shopping/productlist');
@@ -145,29 +131,30 @@ export default {
         },
         addtoCart(id , qty = 1) {  // ES6預設值qty=1
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
-            vm.isLoading = true;
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
                 const cart = {
                     product_id: id,
                     qty,
                 };
+            vm.isLoading = true;
             vm.$http.post(api, { data: cart }).then((response) => {
                 console.log('post' ,response.data);
                 if (!response.data.success) {
                     vm.$bus.$emit('message:push', response.data.message, 'danger');
                 } else {
                     vm.getCart();
+                    // 重新整理 Navbar 購物車
+                    vm.$bus.$emit('cart:get');
+                    vm.$bus.$emit('message:push', '商品已加入購物車', 'success');
                 }
                 vm.isLoading = false;
             });
         },
         getCart() {
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`; 
             vm.isLoading = true;
             this.$http.get(url).then((response) => {
-                // vm.products = response.data.products;  // 取得資料後，將資料存放到products
-                // console.log(response);
                 vm.isLoading = false;
             });
         },
@@ -285,7 +272,6 @@ export default {
         background-size: cover;
         background-position: center center;
         min-height: 400px;
-        // opacity: 0.8;
     }
 
     .bg-lighter {
@@ -339,23 +325,6 @@ export default {
             padding: 0 16px;
         }
     }
-
-    // @media (max-width: 991.98px) { 
-    //     .card-body {
-    //         height: 182px;
-    //     }
-    // }
-
-    // @media (min-width: 992px) { 
-    //     .pd_oprice {
-    //         display: block;
-    //         font-size: 14px;
-    //     }
-    //     .pd_price {
-    //         display: block;
-    //         font-size: 26px;
-    //     }
-    // }
 
     .card-footer {
         background-color: #EA562A;

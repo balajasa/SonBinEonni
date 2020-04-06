@@ -161,7 +161,7 @@ export default {
     methods: {
         getProducts() {  // 取得所有商品列表
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products`;  // 此處使用戶端取得資料的API
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products`;  // 此處使用戶端取得資料的API
             vm.isLoading = true;  // 加入讀取效果
             this.$http.get(url).then((response) => {
                 vm.products = response.data.products;  // 取得資料後，將資料存放到products
@@ -171,7 +171,7 @@ export default {
         },
         getProduct(id) {  // 取得單一商品列表
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`;  // 此處使用戶端取得資料的API
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`;  // 此處使用戶端取得資料的API
             vm.status.loadingItem = id;  // 加入讀取效果
             this.$http.get(url).then((response) => {
                 vm.product = response.data.product;  // 取得資料後，將資料存放到product
@@ -183,7 +183,7 @@ export default {
         },
         addtoCart(id , qty = 1) {  // ES6預設值qty=1
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`; 
             vm.status.loadingItem = id;  // 加入讀取效果
             const cart = {
                 product_id: id,
@@ -198,7 +198,7 @@ export default {
         },
         getCart() {
             const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`; 
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`; 
             vm.isLoading = true;
             this.$http.get(url).then((response) => {
                 // vm.products = response.data.products;  // 取得資料後，將資料存放到products

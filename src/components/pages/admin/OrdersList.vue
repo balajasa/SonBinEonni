@@ -188,7 +188,7 @@ export default {
     },
     methods: {
         getOrders(page = 1) {  // 將products的資料取出並存放到宣告的products裡面  // 使用ES6參數預設值，假設沒有帶數值就會使用預設第一頁；若有帶數值的話就使用傳進來的數值
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/orders?page=${page}`;
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders?page=${page}`;
             const vm = this;  // 確保從http取回資料後能存放到vm中
             vm.isLoading = true;  // 當啟用getProducts時會執行
             this.$http.get(api).then((response) => {
@@ -203,7 +203,7 @@ export default {
         },
         updateOrder() {
             const vm = this;  // vm = data
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/order/${vm.tempOrder.id}`;
+            const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/order/${vm.tempOrder.id}`;
             
             this.$http.put(api, { data: vm.tempOrder }).then((response) => {  // 此處vm.tempOrder會報錯，故需使用{}將它包起來，前方並加上data:
                 console.log(response.data);
@@ -217,25 +217,6 @@ export default {
                 }
             });        
         },
-        // delModal(item) {
-        //     $('#delOrderModal').modal('show');
-        //     this.tempOrder = item;
-        // },
-        // delOrder() {
-        //     const vm = this;
-        //     const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/order/${vm.tempOrder.id}`;
-        //     this.$http.delete(api).then((response) => {  
-        //         console.log(response.data);
-        //         if (response.data.success) {  // 這段與updateProduct相似，若回傳成功執行getOrders
-        //             $('#delOrderModal').modal('hide');
-        //             vm.getOrders();
-        //         }else {  // 若回傳為失敗，則會產生console.log('刪除失敗')
-        //             $('#delOrderModal').modal('hide');
-        //             vm.getOrders();
-        //             console.log('刪除失敗');
-        //         }
-        //     });
-        // },
     },
     computed: {
         sortOrder() {

@@ -1,7 +1,6 @@
 <template>
     <div>
         <form class="form-signin" @submit.prevent="signin">
-            <!-- <img class="mb-4" src="/src/assets/favicon.svg" alt="" width="72" height="72"> -->
             <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" class="form-control" v-model="user.username" placeholder="Email address" required autofocus>
@@ -31,8 +30,7 @@ export default {
   },
   methods: {
     signin() {
-      const api = `${process.env.APIPATH}/admin/signin`;
-      // console.log(api);
+      const api = `${process.env.VUE_APP_APIPATH}/admin/signin`;
       const vm = this;  // vm = data
       this.$http.post(api , vm.user).then((response) => {  // vm.user = 帳號+密碼
         console.log(response.data);
