@@ -188,7 +188,7 @@ export default {
             let code = {
                 code: vm.coupon_code,
             };
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`;
+            const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
             vm.$http.post(url, { data: code }).then(response => {
                 if (response.data.success) {
                     vm.couponResponse = response.data.message;

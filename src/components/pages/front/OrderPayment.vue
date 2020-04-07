@@ -22,20 +22,25 @@
                     <form class="border border-sbtan rounded py-4 px-5" @submit.prevent="creatrOrder">  <!-- 清除預設submit行為 -->
                         <div class="h4">訂單詳細資料</div>
                         <div class="form-group">
-                            <label for="name">收件者姓名</label>
-                            <input type="text" class="form-control" name="name" id="username" v-model="form.user.name" v-validate="'required'" placeholder="請輸入姓名"
-                            :class="{'is-invalid' : errors.has('name')}">
-                            <span class="text-danger" v-if="errors.has('name')">{{ errors.first('name') }}</span>  <!-- 當欄位被觸發過時，若無填寫資料就會變成false -->
+                            <ValidationProvider name="姓名" rules="required" v-slot="{ failed, errors }">
+                                <label for="name">收件者姓名</label>
+                                <input type="text" class="form-control" name="name" id="username" v-model="form.user.name" placeholder="請輸入姓名"
+                                :class="{ 'is-invalid': failed }">
+                                <span class="text-danger">{{ errors[0] }}</span>  <!-- 當欄位被觸發過時，若無填寫資料就會變成false -->
+                            </ValidationProvider>
                         </div>
 
                         <div class="form-row">
                             <div class="col-md-6">
+                                <ValidationProvider name="聯絡電話" rules="required" v-slot="{ failed, errors }">
                                 <label for="tel">聯絡電話</label>
-                                <input type="tel" class="form-control" name="tel" id="usertel" v-model="form.user.tel" v-validate="'required'" placeholder="請輸入電話"
-                                :class="{'is-invalid' : errors.has('tel')}">
-                                <span class="text-danger" v-if="errors.has('tel')">{{ errors.first('tel') }}</span>  <!-- 當欄位被觸發過時，若無填寫資料就會變成false -->
+                                <input type="tel" class="form-control" name="tel" id="usertel" v-model="form.user.tel" placeholder="請輸入電話"
+                                :class="{ 'is-invalid': failed }">
+                                <span class="text-danger">{{ errors[0] }}</span>  <!-- 當欄位被觸發過時，若無填寫資料就會變成false -->
+                                </ValidationProvider>
                             </div>
                             <div class="col-md-6">
+                                <ValidationProvider name="付款方式" rules="required" v-slot="{ failed, errors }">
                                 <label for="payment">付款方式</label>
                                 <select name="payment" id="payment" class="form-control" v-model="form.user.payment">
                                     <option value="selected">請選擇付款方式</option>
@@ -43,22 +48,27 @@
                                     <option value="CVS">超商付款</option>
                                     <option value="ATM">ATM轉帳</option>
                                 </select>
-                                <span class="text-danger" v-if="errors.has('payment')">{{ errors.first('payment') }}</span>
+                                <span class="text-danger">{{ errors[0] }}</span>
+                                </ValidationProvider>
                             </div>
                         </div>
                             
                         <div class="form-group">
+                            <ValidationProvider name="收件地址" rules="required" v-slot="{ failed, errors }">
                             <label for="useraddress">收件地址</label>
                             <div class="form-group mt-3">
-                                <input type="address" class="form-control" name="address" id="useraddress" v-model="form.user.address" v-validate="'required'" placeholder="請輸入地址"
-                                :class="{'is-invalid': errors.has('address')}">
-                                <span class="text-danger" v-if="errors.has('address')">{{ errors.first('address') }}</span>  <!-- 當欄位被觸發過時，若無填寫資料就會變成false -->
+                                <input type="address" class="form-control" name="address" id="useraddress" v-model="form.user.address" placeholder="請輸入地址"
+                                :class="{ 'is-invalid': failed }">
+                                <span class="text-danger">{{ errors[0] }}</span>  <!-- 當欄位被觸發過時，若無填寫資料就會變成false -->
                             </div>
+                            </ValidationProvider>
                         </div>
                         <div class="form-group">
+                            <ValidationProvider name="E-mail" rules="required|email" v-slot="{ failed, errors }">
                             <label for="userEmail">E-mail</label>
-                            <input type="email" class="form-control" name="email" id="useremail" v-model="form.user.email" v-validate="'required|email'" placeholder="請輸入電子信箱">
-                            <span class="text-danger" v-if="errors.has('email')">{{ errors.first('email') }}</span>  <!-- 當欄位被觸發過時，若無填寫資料就會變成false -->
+                            <input type="email" class="form-control" name="email" id="useremail" v-model="form.user.email" placeholder="請輸入電子信箱">
+                            <span class="text-danger">{{ errors[0] }}</span>  <!-- 當欄位被觸發過時，若無填寫資料就會變成false -->
+                            </ValidationProvider>
                         </div>
                         <div class="form-group">
                             <label for="message">訂單備註</label>
@@ -140,7 +150,7 @@ export default {
                 user: {
                     name: '',
                     email: '',
-                    rel: '',
+                    tel: '',
                     address: '',
                     payment: 'selected',
                 },
@@ -160,27 +170,27 @@ export default {
             const order = vm.form;
             vm.isLoading = true;
             vm.isNext = true;
-            // 送出時套件驗證
-            vm.$validator.validate().then((valid) => {
-                if (valid) {
-                    vm.$http.post(url, { data: order }).then((response) => {
-                        console.log('creatrOrder' , response.data);
-                        if (response.data.success) {
-                            // 清除localStorage cart資料
-                            localStorage.removeItem('cart');
-                            vm.$bus.$emit('cart:get');
-                            let orderId = response.data.orderId;
-                            vm.$router.push(`/shopping/OrderInfo/${orderId}`);
-                        } else {
-                            vm.$bus.$emit('message:push', response.data.message, 'danger');
-                            vm.$router.push('/shopping/productlist');
-                        }
-                    });
+            vm.$http.post(url, { data: order }).then((response) => {
+                // console.log('creatrOrder' , response.data);
+                if (response.data.success) {
+                    // 清除localStorage cart資料
+                    localStorage.removeItem('cart');
+                    vm.$bus.$emit('cart:get');
+                    let orderId = response.data.orderId;
+                    vm.$router.push(`/shopping/OrderInfo/${orderId}`);
                 } else {
-                    vm.$bus.$emit('message:push', '請確認資料是否填寫完整', 'danger');
+                    vm.$bus.$emit('message:push', response.data.message, 'danger');
+                    vm.$router.push('/shopping/productlist');
                 }
-                vm.isLoading = false;
             });
+            // vm.$validator.validate().then((valid) => {
+            //     if (valid) {
+
+            //     } else {
+            //         vm.$bus.$emit('message:push', '請確認資料是否填寫完整', 'danger');
+            //     }
+            //     vm.isLoading = false;
+            // });
         },
         goBack() {
             this.isNext = true;

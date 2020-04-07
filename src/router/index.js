@@ -41,7 +41,7 @@ Vue.use(VueRouter)
                     path: 'OrderPayment',
                     component: () => import('@/components/pages/front/OrderPayment'),  
                   },
-                  {  // /shopping/OrderPayment
+                  {  // /shopping/OrderInfo
                     name: 'OrderInfo',
                     path: 'OrderInfo/:order_id',
                     component: () => import('@/components/pages/front/OrderInfo'),  
