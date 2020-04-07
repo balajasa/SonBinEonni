@@ -52,13 +52,13 @@ Vue.use(VueRouter)
           {
             name: 'Login',
             path: '/login',
-            component: () => import('@/components/pages/front/ProductList'),
+            component: () => import('@/components/pages/admin/Login'),
           },
 
           {
             name: 'Dashboard',
             path: '/admin',
-            component: () => import('@/components/pages/admin/Login'),
+            component: () => import('@/views/admin/Dashboard'),
               children: [
                 {
                   name: 'Products',

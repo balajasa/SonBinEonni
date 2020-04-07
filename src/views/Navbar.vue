@@ -27,7 +27,7 @@
                         </i>
                     </button>
                 <!-- 下拉頁面 -->
-                <div class="dropdown-menu px-3" aria-labelledby="favorDropdown" style="min-width: 300px">
+                <div class="dropdown-menu dropdown-menu-right px-3" aria-labelledby="favorDropdown" style="min-width: 300px">
                     <h6>願望清單</h6>
                     <table class="table table-sm table-hover">
                         <tbody>
@@ -58,7 +58,7 @@
                         </i>
                     </button>
                 <!-- 下拉頁面 -->
-                <div class="dropdown-menu px-3" aria-labelledby="cartDropdown" style="min-width: 300px">
+                <div class="dropdown-menu dropdown-menu-right px-3" aria-labelledby="cartDropdown" style="min-width: 300px">
                     <h6>已選擇商品</h6>
                     <!-- <h5 class="itemTitle" v-if='cartLength === 0'>購物車是空的唷！</h5>
                     <h5 class="itemTitle" v-else>購物車</h5> -->
