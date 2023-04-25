@@ -1,27 +1,95 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+          // 預設主頁
+          {
+            path: '*',  // 若進入的頁面非設定的頁面，會被重新導向
+            redirect: '/',  
+          },
 
-const router = new VueRouter({
-  routes
-})
+          {
+            name: 'MainPage',
+            path: '/',
+            component: () => import('@/views/Home.vue'),
+          },
 
-export default router
+          {
+            name: 'Shopping',
+            path: '/shopping',
+            component: () => import('@/views/Shopping'),
+              children: [
+                  {   // /shopping/shopping_prod
+                    name: 'ProductList',
+                    path: 'productlist',
+                    component: () => import('@/components/pages/front/ProductList'),  
+                  },
+                  {   // /shopping/ProductDetail/:product_id
+                    name: 'ProductDetail',
+                    path: 'productdetail/:product_id',
+                    component: () => import('@/components/pages/front/ProductDetail'),  
+                  },
+                  {  // /shopping/cartlist
+                    name: 'CartList',
+                    path: 'cartlist',
+                    component: () => import('@/components/pages/front/CartList'),  
+                  },
+                  {  // /shopping/OrderPayment
+                    name: 'OrderPayment',
+                    path: 'OrderPayment',
+                    component: () => import('@/components/pages/front/OrderPayment'),  
+                  },
+                  {  // /shopping/OrderInfo
+                    name: 'OrderInfo',
+                    path: 'OrderInfo/:order_id',
+                    component: () => import('@/components/pages/front/OrderInfo'),  
+                  },
+              ],
+          },
+
+          {
+            name: 'Login',
+            path: '/login',
+            component: () => import('@/components/pages/admin/Login'),
+          },
+
+          {
+            name: 'Dashboard',
+            path: '/admin',
+            component: () => import('@/views/admin/Dashboard'),
+              children: [
+                {
+                  name: 'Products',
+                  path: 'products',
+                  component: () => import('@/components/pages/admin/Products'),
+                  meta: { requiresAuth: true },  // 放至此處為確保進入此頁面時，需要被驗證
+                },
+                {
+                  name: 'OrdersList',
+                  path: 'orderslist',
+                  component: () => import('@/components/pages/admin/OrdersList'),
+                  meta: { requiresAuth: true },  // 放至此處為確保進入此頁面時，需要被驗證
+                },
+                {
+                  name: 'Coupons',
+                  path: 'coupons',
+                  component: () => import('@/components/pages/admin/Coupons'),
+                  meta: { requiresAuth: true },  // 放至此處為確保進入此頁面時，需要被驗證
+                },
+              ],
+          },
+  ];
+
+  const router = new VueRouter({
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      if (savedPosition) {
+          return savedPosition;
+      }
+      return { x: 0, y: 0 };
+    },
+  });
+
+  export default router

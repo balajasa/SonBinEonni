@@ -1,0 +1,39 @@
+.bg-sub {
+    background-color: #efe7de;
+}
+
+.form-square {
+    background-color: #FAF4F4;
+}
+
+.subtext {
+    color: #463F32;
+    font-weight: bold;
+}
+
+.form-square.form-square-withicon {
+    padding-left: 60px;
+    position: relative;
+}
+
+.form-square .form-input {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.form-square .form-square-icon-left {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    font-size: 20px;
+    color: #EA562A;
+}
+
+.btn-accent {
+    color: #FFFFFF;
+    background-color: #EA562A;
+    border-color: #EA562A;
+}

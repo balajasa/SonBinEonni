@@ -20,7 +20,7 @@
 <script>
 // 將要置入此頁面的元件import近來
 import Navbar from './Navbar';
-import Alert from '../views/admin/AlertMessage';
+import Alert from '../admin/AlertMessage';
 import Carousel from './Carousel';
 import ContentPage from '@/components/pages/front/ContentPage';
 import Subscription from '@/components/pages/front/Subscription';
